@@ -2,16 +2,25 @@ class StoriesController < ApplicationController
     before_action :find_story, only: [:show, :edit, :update, :destroy]
     
     def index
-        @stories = Story.all.order(created_at: :desc).first(6)
+        @stories = Story.order(id: :asc)
         render json: @stories
     end
 
     def create
         @story = Story.create(story_params)
-        render json: @story
+        if @story.valid?
+            render json: @story, status: :created
+        else
+            render json: {errors: @story.errors.full_messages}, status: 400
+        end
     end
 
     def show
+        render json: @story
+    end
+
+    def destroy
+        @story.destroy
         render json: @story
     end
 
