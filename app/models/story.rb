@@ -2,7 +2,7 @@ class Story < ApplicationRecord
     has_many :comments
     belongs_to :author, class_name: 'User'
 
-
+# TODO Add validations for title and body fields with minimum chars
 
 
 # TODO: Create a author_full_name() method into my serializer for fetching stories
