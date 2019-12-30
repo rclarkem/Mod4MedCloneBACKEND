@@ -10,7 +10,6 @@ has_many :authored_stories, foreign_key: :author_id, class_name: :Story
  validates :password_digest, length: { in: 6..20 }
 
 # TODO add in has_many followings with their associations
-# TODO: Create a user serializer 
 
     
 end
