@@ -41,9 +41,9 @@ article_data.map do |dataInfo|
 end
 
 
-user1 = User.create(name: 'RC', email: 'RC@edu.com', password_digest: '123', avatar: '123', bio: "social media apps are evil", img: Faker::Avatar.image )
-user2 = User.create(name: 'Ali', email: 'Ali@edu.com', password_digest: '123', avatar: '123', bio: "I have super strength", img: Faker::Avatar.image)
-user3 = User.create(name: 'Jamal', email: 'Jamal@edu.com', password_digest: '123', avatar: '123', bio: "FAAAAAXXXX Them", img: Faker::Avatar.image)
+user1 = User.create(name: 'RC', email: 'RC@edu.com', password: '123', avatar: '123', bio: "social media apps are evil", img: Faker::Avatar.image )
+user2 = User.create(name: 'Ali', email: 'Ali@edu.com', password: '123', avatar: '123', bio: "I have super strength", img: Faker::Avatar.image)
+user3 = User.create(name: 'Jamal', email: 'Jamal@edu.com', password: '123', avatar: '123', bio: "FAAAAAXXXX Them", img: Faker::Avatar.image)
 story1 = Story.create(title: 'Why did I pick this', body: Faker::Lorem.sentence(word_count: 150), author_id: user1.id)
 story2 = Story.create(title: 'I hope this is working', body: Faker::Lorem.sentence(word_count: 150), author_id: user1.id )
 story3 = Story.create(title: 'This is way more involved than I thought', body: Faker::Lorem.sentence(word_count: 150), author_id: user2.id)

@@ -2,9 +2,12 @@ class UsersController < ApplicationController
 before_action :find_user, only: [:show, :edit, :update, :destroy]
 
 def index
-    @user = User.all
-    render json: @user
+    @users = User.all
+    render json: @users
 end
+
+
+
 
 def show
     render json: @user
