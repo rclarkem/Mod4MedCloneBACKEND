@@ -8,7 +8,6 @@ end
 
 
 
-
 def show
     render json: @user, include: '**'
 end
