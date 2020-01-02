@@ -57,4 +57,7 @@ comment1 = Comment.create(body: 'Test0', author_id: user1.id, story_id: story1.i
 comment2 = Comment.create(body: 'Test1', author_id: user1.id, story_id: story1.id)
 comment3 = Comment.create(body: 'Test2', author_id: user1.id, story_id: story1.id)
 
+comment4 = Comment.create(body: 'Test2', author_id: user3.id, story_id: story1.id)
+comment5 = Comment.create(body: 'Test2', author_id: user3.id, story_id: story2.id)
+
 puts 'seeded'

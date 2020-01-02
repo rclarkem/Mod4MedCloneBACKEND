@@ -1,5 +1,5 @@
 class StorySerializer < ActiveModel::Serializer
-  attributes :id, :author_id, :author_full_name, :author_avatar, :title, :story_length, :body
+  attributes :id, :author_id, :author_full_name, :author_avatar, :title, :story_length, :body, :comments
 
 def author_full_name
   author = self.object.author_id
