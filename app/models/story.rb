@@ -1,5 +1,5 @@
 class Story < ApplicationRecord
-    has_many :comments
+    has_many :comments, dependent: :destroy
     belongs_to :author, class_name: 'User'
 
 # TODO Add validations for title and body fields with minimum chars

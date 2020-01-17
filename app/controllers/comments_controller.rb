@@ -12,7 +12,11 @@ before_action :find_comment, only: [:show, :edit, :update, :destroy]
 
     def create
         @comment = Comment.create(comment_params)
-        render json: @comment
+        if @comment.valid?
+            render json: @comment, status: :created
+        else
+            render json: {errors: @comment.errors.full_messages}, status: 400
+        end
     end
 
     def destroy
@@ -26,6 +30,6 @@ before_action :find_comment, only: [:show, :edit, :update, :destroy]
     end
 
     def comment_params
-        params.require(:comment).permit(:body)
+        params.require(:comment).permit(:body, :author_id, :story_id)
     end
 end

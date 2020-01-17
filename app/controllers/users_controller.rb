@@ -6,8 +6,6 @@ def index
     render json: @users, include: '**'
 end
 
-
-
 def show
     render json: @user, include: '**'
 end

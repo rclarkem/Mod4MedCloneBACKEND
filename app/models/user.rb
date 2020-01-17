@@ -1,11 +1,12 @@
 class User < ApplicationRecord
-has_many :comments, foreign_key: :author_id, class_name: :Comment
-has_many :authored_stories, foreign_key: :author_id, class_name: :Story
+has_many :comments, foreign_key: :author_id, class_name: :Comment, dependent: :destroy
+
+has_many :authored_stories, foreign_key: :author_id, class_name: :Story, dependent: :destroy
 
 has_secure_password
 
  validates :name, presence: true
- validates :name, length: { minimum: 2 }
+#  validates :name, length: { minimum: 2 }
  validates :email, presence: true
 #  validates :email, confirmation: true
  validates :email, uniqueness: true
