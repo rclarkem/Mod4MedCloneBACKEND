@@ -27,7 +27,7 @@ def find_user
 end
 
 def user_params
-    params.require(:user).permit(:name, :email, :password, :avatar, :bio, :img)
+    params.permit(:name, :email, :password)
 end
 
 end
