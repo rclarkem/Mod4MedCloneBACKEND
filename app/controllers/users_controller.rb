@@ -6,6 +6,17 @@ def index
     render json: @users, include: '**'
 end
 
+
+
+def create
+    # @user = User.create(user_params)
+    # if @user.valid?
+    #     render json: {user: UserSerializer.new(@user)}, status: :created
+    # else
+    #     render json: {error: 'failed to create user'}, status: :not_acceptable
+    # end
+end
+
 def show
     render json: @user, include: '**'
 end
@@ -16,7 +27,7 @@ def find_user
 end
 
 def user_params
-    params.require(:user).permit(:name, :email, :password, :avatar, :bio)
+    params.require(:user).permit(:name, :email, :password, :avatar, :bio, :img)
 end
 
 end
