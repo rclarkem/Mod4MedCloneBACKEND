@@ -2,8 +2,10 @@ class StoriesController < ApplicationController
     before_action :find_story, only: [:show, :edit, :update, :destroy]
     
     def index
+        if valid_token
         @stories = Story.order(id: :asc)
         render json: @stories
+        end 
     end
 
     def create

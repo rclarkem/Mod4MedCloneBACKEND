@@ -11,14 +11,19 @@ end
 def create
     @user = User.create(user_params)
     if @user.valid?
-        render json: {user: UserSerializer.new(@user)}, status: :created
+        render json: {token: create_token(@user.id)}, status: :created
     else
-        render json: {error: 'failed to create user'}, status: :not_acceptable
+        render json: {error: @user.errors.full_messages}, status: :not_acceptable
     end
 end
 
 def show
-    render json: @user, include: '**'
+    user_id = params[:id]
+    if logged_in_user_decoded == @user.id
+        render json: @user, include: '**'
+    else
+        render json: {error: 'Go Away!'}
+    end
 end
 
 private
