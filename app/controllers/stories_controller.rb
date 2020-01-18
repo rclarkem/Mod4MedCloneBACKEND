@@ -1,13 +1,13 @@
 class StoriesController < ApplicationController
     before_action :find_story, only: [:show, :edit, :update, :destroy]
     
-    def index
-        # if valid_token
-        @stories = Story.order(id: :asc)
-        render json: @stories
-        # end
+    # def index
+    #     # if valid_token
+    #     @stories = Story.order(id: :asc)
+    #     render json: @stories
+    #     # end
         
-    end
+    # end
 
     def create
         @story = Story.create(story_params)
@@ -19,7 +19,9 @@ class StoriesController < ApplicationController
     end
 
     def show
+        # if valid_token
         render json: @story
+        # end
     end
 
     def destroy
@@ -27,7 +29,7 @@ class StoriesController < ApplicationController
         @story.destroy
             render json: {success: ['Your story deleted']}, status: 200
         else
-            render json: {errors: ['This is not your story']}, status: 400
+            render json: {errors: {:story_author => "Story belongs to another user", :reason => "This is not your story"}}, status: 400
         end
     end
 

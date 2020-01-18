@@ -3,6 +3,7 @@ class UserSerializer < ActiveModel::Serializer
   has_many :following_users
   has_many :followed_users
   has_many :authored_stories
+
   
   
 
