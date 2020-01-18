@@ -5,10 +5,12 @@ class StoriesController < ApplicationController
         if valid_token
         @stories = Story.order(id: :asc)
         render json: @stories
-        end 
+        end
+        
     end
 
     def create
+        if valid_token
         @story = Story.create(story_params)
         if @story.valid?
             render json: @story, status: :created
@@ -16,14 +18,19 @@ class StoriesController < ApplicationController
             render json: {errors: @story.errors.full_messages}, status: 400
         end
     end
+    end
 
     def show
+        
         render json: @story
+    
     end
 
     def destroy
+        if valid_token
         @story.destroy
         render json: @story
+        end
     end
 
     private
