@@ -2,10 +2,11 @@ class StoriesController < ApplicationController
     before_action :find_story, only: [:show, :edit, :update, :destroy]
     
     def index
-        if valid_token
+        # if valid_token
         @stories = Story.order(id: :asc)
         render json: @stories
-        end 
+        # end
+        
     end
 
     def create
@@ -22,8 +23,12 @@ class StoriesController < ApplicationController
     end
 
     def destroy
+        if valid_token && logged_in_user_decoded == @story.author_id
         @story.destroy
-        render json: @story
+            render json: {success: ['Your story deleted']}, status: 200
+        else
+            render json: {errors: ['This is not your story']}, status: 400
+        end
     end
 
     private
