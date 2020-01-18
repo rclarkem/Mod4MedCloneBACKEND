@@ -1,13 +1,15 @@
 class StoriesController < ApplicationController
     before_action :find_story, only: [:show, :edit, :update, :destroy]
     
-    # def index
-    #     # if valid_token
-    #     @stories = Story.order(id: :asc)
-    #     render json: @stories
-    #     # end
+    def index
+        # if valid_token
+        @stories = Story.order(id: :asc)
+        render json: @stories
+        # else 
+            # render json: {error: 'No access given'}
+    
         
-    # end
+    end
 
     def create
         @story = Story.create(story_params)
@@ -19,9 +21,11 @@ class StoriesController < ApplicationController
     end
 
     def show
-        # if valid_token
+        if valid_token
         render json: @story
-        # end
+        else
+             render json: {error: 'No access given'}
+        end
     end
 
     def destroy
@@ -35,7 +39,11 @@ class StoriesController < ApplicationController
 
     private
     def find_story
-        @story = Story.find(params[:id])
+        begin
+            @story = Story.find(params[:id])
+        rescue 
+          render json: {errors: ['This does not exist']}, status: 404
+        end
     end
 
     def story_params
