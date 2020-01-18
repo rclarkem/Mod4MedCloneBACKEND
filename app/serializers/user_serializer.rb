@@ -5,7 +5,4 @@ class UserSerializer < ActiveModel::Serializer
   has_many :followed_users
   
 
-
-# TODO: Serializer for stories with comments
-
 end
